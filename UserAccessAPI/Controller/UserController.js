@@ -12,7 +12,7 @@ module.exports.signUp=function(req,res){
 }
 
 module.exports.fetchBook=function(req,res){
-  console.log('entered user con')
+  //console.log('entered user con')
   
   // var johndoe = new model.book ({
   //   name: req.body.name,

@@ -2,7 +2,7 @@
   "name": "node_app",
   "version": "1.0.0",
   "description": "Webapp in MeanStack",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "express-http-proxy": "^1.5.1",
+    "http-route-proxy": "^0.2.2",
     "mongoose": "^5.4.20"
   }
 }

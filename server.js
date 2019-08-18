@@ -7,8 +7,8 @@ var http=require('http')
 var fs=require('fs')
 var routes2=require('./UserAccessAPI/routes/app')
 var mongoose=require('mongoose')
-
-
+var proxy = require('express-http-proxy');
+const url = require('url');
 
 mongoose.connect('mongodb://localhost:27017/UserDb',function(err){
 	if(err){
@@ -29,10 +29,28 @@ app.all('*', function(req, res, next) {
 	next();
 });
 
+const apiProxy = proxy('https://jsonplaceholder.typicode.com/', {
+	forwardPath: req => url.parse(req.baseUrl).path,
+	proxyReqOptDecorator: function(proxyReqOpts, srcReq) {
+		// you can update headers
+		proxyReqOpts.headers['Content-Type'] = 'text/html';
+		// you can change the method
+		console.log(srcReq.method+"method")
+		proxyReqOpts.method = 'GET';
+		return proxyReqOpts;
+	  }
+});
+app.use('/todos/*', apiProxy);
+app.use(express.static(__dirname + '/dist'));
 
-app.get('',function(req,res){
-	res.send('Hello World!!')
-})
+app.get('/', function(req, res) {
+    res.render('index.html');
+});
+
+
+// app.get('',function(req,res){
+// 	res.send('Hello World!!')
+// })
 
 app.post('',function(req,res){
 	console.log('got the request'+req.body.name)
