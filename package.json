@@ -12,6 +12,6 @@
     "express": "^4.16.4",
     "express-http-proxy": "^1.5.1",
     "http-route-proxy": "^0.2.2",
-    "mongoose": "^5.4.20"
+    "mongoose": "^5.7.5"
   }
 }
