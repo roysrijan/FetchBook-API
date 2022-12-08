@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "express-http-proxy": "^1.5.1",
     "http-route-proxy": "^0.2.2",
     "mongoose": "^5.4.20"
